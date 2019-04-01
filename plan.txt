@@ -1,0 +1,18 @@
+plan
+
+PARSER/POSTBUILDER
+ability to insert template
+    template will have CSS, layout attached etc
+parser to get blog post
+    get post from custom text format
+
+HTTPSERVER
+    Take requests
+        Route by ID
+        Route by date?
+
+WEBSITE
+    Home
+    Blog
+        PostID
+    About
