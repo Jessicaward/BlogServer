@@ -1,7 +1,11 @@
 package main
 
-import ("fmt")
+import (
+	"fmt"
+	"BlogServer/server"
+)
 
 func main() {
 	fmt.Println("Blog server starting...")
+	server.HandleRoute()
 }
