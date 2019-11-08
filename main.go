@@ -1,15 +1,7 @@
 package main
 
-import (
-	"BlogServer/parser"
-	"fmt"
-)
+import ("fmt")
 
 func main() {
-	filePath := "content/blog.jess"
-	fmt.Println(filePath)
-	result := parser.Parse(filePath)
-	for x := 0; x < len(result); x++ {
-		fmt.Println(result)
-	}
+	fmt.Println("Blog server starting...")
 }
