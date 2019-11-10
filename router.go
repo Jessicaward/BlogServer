@@ -5,7 +5,9 @@ import (
 	"fmt"
 )
 
-func HandleRoute(){
+func HandleRoute() *http.Server{
+	server := &http.Server{Addr: ":80"}
+	
 	http.HandleFunc("/", func (w http.ResponseWriter, r *http.Request){
 		fmt.Fprintf(w, "Welcome to my site")
 	})
@@ -21,4 +23,7 @@ func HandleRoute(){
 	})
 
 	http.ListenAndServe(":80", nil)
+
+    // returning reference so caller can call Shutdown()
+	return server
 }
