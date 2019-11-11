@@ -33,9 +33,10 @@ func HandleRoute() *http.Server{
 }
 
 func loadRandomAlbum (w http.ResponseWriter, r *http.Request) {
-	t, _ := template.ParseFiles("content/RandomAlbum.html")
+	t, _ := template.ParseFiles("content/Layout.html", "content/RandomAlbum.html")
 	album := loadAlbum()
-	t.Execute(w, album)
+	fmt.Println(album.Name)
+	t.ExecuteTemplate(w, "layout", album)
 }
 
 func loadAlbum() *Album {
