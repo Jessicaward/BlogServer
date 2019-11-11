@@ -15,12 +15,12 @@ func main() {
 	server := HandleRoute()
 
 	//get commands
-	/*for {
+	for {
 		state = getServerState()
 		if (state != "stopped"){
 			break
 		}	
-	}*/
+	}
 
 	stopServer(server)
 }
