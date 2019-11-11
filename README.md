@@ -4,7 +4,7 @@ Server for my personal website. Backend written in Golang.
 ## Random Album Generator
 Generates a random album (from my list of like 5000+ albums on Last.fm).
 
- ___go follow me https://www.last.fm/user/jessicaward25 ;)___
+[Follow my Last.fm profile](https://www.last.fm/user/jessicaward25)
  
 ## Blog
 This will serve as a place to put thoughts, articles, whatever I want I guess.
