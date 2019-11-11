@@ -9,9 +9,9 @@ import (
 func HandleRoute() *http.Server{
 	server := &http.Server{Addr: ":80"}
 	
-	http.HandleFunc("/", func (w http.ResponseWriter, r *http.Request){
-		fmt.Fprintf(w, "Welcome to my site")
-	})
+	// http.HandleFunc("/", func (w http.ResponseWriter, r *http.Request){
+	// 	fmt.Fprintf(w, "Welcome to my site")
+	// })
 
 	http.HandleFunc("/blog/", func (w http.ResponseWriter, r *http.Request){
 		fmt.Fprintf(w, "Welcome to my blog")
@@ -22,6 +22,9 @@ func HandleRoute() *http.Server{
 	http.HandleFunc("/test/", func (w http.ResponseWriter, r *http.Request){
 		fmt.Fprintf(w, post)
 	})
+
+	//static CSS and JS files
+	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("static"))))
 
 	//get random album
 	http.HandleFunc("/album/", loadRandomAlbum)
@@ -41,5 +44,8 @@ func loadRandomAlbum (w http.ResponseWriter, r *http.Request) {
 
 func loadAlbum() *Album {
 	album := GetAlbumAtPosition(1)
-    return &Album{Name: album.Name, Artist: album.Artist}
+	return &Album{Name: album.Name,
+				  Artist: album.Artist,
+				  Length: album.Length,
+				  PositionOnLastFm: album.PositionOnLastFm}
 }

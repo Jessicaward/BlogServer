@@ -1,4 +1,14 @@
 {{ define "post" }}
-    <h1>Artist is {{.Artist}}</h1>
-    <p>Album is {{.Name}}</p>
+    <h1>Random Album Selector</h1>
+    <h3>{{.Artist}} - {{.Name}}</h3>
+    <p>#{{.PositionOnLastFm}} on my Last.fm</p>
+    <p id="albumLength">{{.Length}}</p>
+
+    <script>
+        $(document).ready(function(){
+            var text = $("#albumLength").text();
+            var newText = text.replace(":", " minutes ") + " seconds";
+            $("#albumLength").text(newText);
+        });
+    </script>
 {{ end }}
