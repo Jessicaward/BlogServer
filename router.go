@@ -43,9 +43,11 @@ func loadRandomAlbum (w http.ResponseWriter, r *http.Request) {
 }
 
 func loadAlbum() *Album {
-	album := GetAlbumAtPosition(1)
+	album := GetRandomAlbum()
 	return &Album{Name: album.Name,
 				  Artist: album.Artist,
-				  Length: album.Length,
-				  PositionOnLastFm: album.PositionOnLastFm}
+				  PositionOnLastFm: album.PositionOnLastFm,
+				  ImageUrl: album.ImageUrl,
+				  PlayCount: album.PlayCount,
+				}
 }
