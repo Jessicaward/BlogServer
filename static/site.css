@@ -13,6 +13,19 @@ body {
     margin: 0;
 }
 
+#metadataContainer{
+    vertical-align: top;
+}
+
+#artworkContainer,
+#metadataContainer{
+    display: inline-block;
+}
+
+#imageArtwork {
+    height: 175px;
+}
+
 div.post {
     padding: 10px;
 }

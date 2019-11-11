@@ -6,6 +6,7 @@ import (
 	"github.com/shkh/lastfm-go/lastfm"
 	"fmt"
 	"strconv"
+	"strings"
 )
 
 type Album struct {
@@ -18,10 +19,11 @@ type Album struct {
 
 //Constructor for Album struct
 func NewAlbum(name string, artist string, positionOnLastFm string, imageUrl string, playCount string) *Album {
+	newImageUrl := strings.Replace(imageUrl, "34s", "128s", -1)
 	album := Album{Name: name,
 				   PositionOnLastFm: positionOnLastFm,
 				   Artist: artist,
-				   ImageUrl: imageUrl,
+				   ImageUrl: newImageUrl,
 				   PlayCount: playCount}
 	return &album
 }
