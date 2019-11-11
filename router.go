@@ -2,6 +2,7 @@ package main
 
 import (
 	"net/http"
+	"html/template"
 	"fmt"
 )
 
@@ -22,8 +23,23 @@ func HandleRoute() *http.Server{
 		fmt.Fprintf(w, post)
 	})
 
+	//get random album
+	http.HandleFunc("/album/", loadRandomAlbum)
+
 	http.ListenAndServe(":80", nil)
 
     // returning reference so caller can call Shutdown()
 	return server
+}
+
+func loadRandomAlbum (w http.ResponseWriter, r *http.Request) {
+	t, _ := template.ParseFiles("content/Layout.html", "content/RandomAlbum.html")
+	album := loadAlbum()
+	fmt.Println(album.Name)
+	t.ExecuteTemplate(w, "layout", album)
+}
+
+func loadAlbum() *Album {
+	album := GetAlbumAtPosition(1)
+    return &Album{Name: album.Name, Artist: album.Artist}
 }

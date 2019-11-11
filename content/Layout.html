@@ -1,14 +1,18 @@
-<html>
-    <head>
-        <title>Jessica's Blog</title>
-        <link href="/Content/site.css" rel="stylesheet">
-    </head>
-    <body>
-        <div class="navbar">
-            
-        </div>
-        <div class="post">
-            {BLOGPOST}
-        </div>
-    </body>
-</html>
+{{ define "layout" }}
+    <html>
+        <head>
+            <title>Jessica's Blog</title>
+            <link href="/Content/site.css" rel="stylesheet">
+        </head>
+        <body>
+            <div class="navbar">
+                
+            </div>
+            <div class="post">
+                <div>{{template "post" . }}</div>
+            </div>
+        </body>
+    </html>
+{{ end }}
+
+{{ template "layout" }}
