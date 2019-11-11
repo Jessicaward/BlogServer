@@ -1,4 +1,12 @@
 {{ define "post" }}
-    <h1>Artist is {{.Artist}}</h1>
-    <p>Album is {{.Name}}</p>
+    <h1>Random Album Selector</h1>
+    <div id="albumContainer">
+        <div id="metadataContainer">
+            <h3>{{.Artist}} - {{.Name}}</h3>
+            <p>#{{.PositionOnLastFm}} on my Last.fm ({{.PlayCount}} plays since February 2017)</p>
+        </div>
+        <div id="artworkContainer">
+            <img id="imageArtwork" src="{{.ImageUrl}}">
+        </div>
+    </div>
 {{ end }}

@@ -11,6 +11,12 @@ import (
 var state = "started"
 
 func main() {
+	fmt.Println("Retrieving config info")
+
+	config := GetLastFmConfiguration();
+
+	fmt.Println(config.ApiKey)
+
 	fmt.Println("Blog server starting...")
 	server := HandleRoute()
 

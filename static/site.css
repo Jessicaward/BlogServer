@@ -1,0 +1,31 @@
+body {
+    font-family: arial;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar {
+    background-color: #fafafa;
+    padding: 10px 20px;
+}
+
+.navbar #title {
+    margin: 0;
+}
+
+#metadataContainer{
+    vertical-align: top;
+}
+
+#artworkContainer,
+#metadataContainer{
+    display: inline-block;
+}
+
+#imageArtwork {
+    height: 175px;
+}
+
+div.post {
+    padding: 10px;
+}
