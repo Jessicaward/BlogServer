@@ -3,6 +3,7 @@ package main
 import (
 	"math/rand"
 	"time"
+	//"github.com/shkh/lastfm-go/lastfm"
 )
 
 type Album struct {
@@ -30,6 +31,7 @@ func GetAlbums() []*Album {
 }
 
 func GetAlbumAtPosition(position int) *Album {
+	//api := lastfm.New (ApiKey, ApiSecret)
 	//todo: again, just test data.. still need to implement the Last.fm API.
 	return NewAlbum("Lateralus", "Tool", 1, "49:19")
 }
