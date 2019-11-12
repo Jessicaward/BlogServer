@@ -12,5 +12,5 @@ This will serve as a place to put thoughts, articles, whatever I want I guess.
 ## Portfolio
 It's always useful to have an updated portfolio. I do a lot of work outside of my programming job, so I'd like to keep track of everything.
 
-## Random link section
+## Random Link Section
 Random links to articles, videos, useful sites etc that I find.
