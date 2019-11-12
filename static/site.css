@@ -1,25 +1,40 @@
 body {
-    font-family: arial;
+    font-family: 'Raleway', sans-serif, arial;
     margin: 0;
     padding: 0;
 }
 
 .navbar {
-    background-color: #fafafa;
+    border-bottom: 1px #9e9e9e solid;
     padding: 10px 20px;
 }
 
 .navbar #title {
     margin: 0;
+    display: inline-block;
 }
 
-.navbar .navbar-menu {
+.navbar ul {
     float: right;
-}
-
-.navbar .navbar-menu ul {
+    margin: 10px;
     padding: 0;
     list-style-type:none;
+    display: inline-block;
+}
+
+.navbar ul li {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.navbar ul li a {
+    text-decoration: none;
+    color: #333333;
+}
+
+.navbar ul li a:hover {
+    color: #111111;
+    font-weight: bold;
 }
 
 #metadataContainer{
