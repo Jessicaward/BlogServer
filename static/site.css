@@ -14,6 +14,11 @@ body {
     display: inline-block;
 }
 
+.navbar #title a {
+    text-decoration: none;
+    color: black;
+}
+
 .navbar ul {
     float: right;
     margin: 10px;
