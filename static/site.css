@@ -13,6 +13,15 @@ body {
     margin: 0;
 }
 
+.navbar .navbar-menu {
+    float: right;
+}
+
+.navbar .navbar-menu ul {
+    padding: 0;
+    list-style-type:none;
+}
+
 #metadataContainer{
     vertical-align: top;
 }

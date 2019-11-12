@@ -7,17 +7,24 @@ import (
 )
 
 func HandleRoute() {
+	http.HandleFunc("/", loadHomePage)
+	http.HandleFunc("/album/", loadRandomAlbum)
+	http.HandleFunc("/projects/", loadProjects)
+
 	http.HandleFunc("/blog/", func(w http.ResponseWriter, r *http.Request) {
+		//todo: remove this, test code.
 		fmt.Fprintf(w, "Welcome to my blog")
 	})
 
 	//static CSS and JS files
 	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("static"))))
 
-	http.HandleFunc("/album/", loadRandomAlbum)
-	http.HandleFunc("/projects/", loadProjects)
-
 	http.ListenAndServe(":80", nil)
+}
+
+func loadHomePage(w http.ResponseWriter, r *http.Request) {
+	t, _ := template.ParseFiles("content/Layout.html", "content/Home.html")
+	t.Execute(w, "layout")
 }
 
 func loadRandomAlbum(w http.ResponseWriter, r *http.Request) {
