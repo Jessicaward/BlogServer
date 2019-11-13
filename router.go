@@ -10,6 +10,7 @@ func HandleRoute() {
 	http.HandleFunc("/", loadHomePage)
 	http.HandleFunc("/album/", loadRandomAlbum)
 	http.HandleFunc("/projects/", loadProjects)
+	http.HandleFunc("/social/", loadSocial)
 
 	http.HandleFunc("/blog/", func(w http.ResponseWriter, r *http.Request) {
 		//todo: remove this, test code.
@@ -36,5 +37,10 @@ func loadRandomAlbum(w http.ResponseWriter, r *http.Request) {
 
 func loadProjects(w http.ResponseWriter, r *http.Request) {
 	t, _ := template.ParseFiles("content/Layout.html", "content/Projects.html")
+	t.Execute(w, "layout")
+}
+
+func loadSocial(w http.ResponseWriter, r *http.Request) {
+	t, _ := template.ParseFiles("content/Layout.html", "content/Social.html")
 	t.Execute(w, "layout")
 }
