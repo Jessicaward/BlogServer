@@ -14,3 +14,6 @@ It's always useful to have an updated portfolio. I do a lot of work outside of m
 
 ## Random Link Section
 Random links to articles, videos, useful sites etc that I find.
+
+## Projects
+Place to link music projects, code projects, recent endeavours etc 😎
