@@ -89,3 +89,19 @@ div.post h3 {
 hr {
     border-color: #ffffff;
 }
+
+.lozenge {
+    border-radius: 4px;
+    color: white;
+    background-color: #AF4319;
+    width: fit-content;
+    padding: 3px;
+}
+
+.lozenge.orange {
+    background-color: #AF4319;
+}
+
+.lozenge.lilac {
+    background-color: #9E7682;
+}
