@@ -105,3 +105,9 @@ hr {
 .lozenge.lilac {
     background-color: #9E7682;
 }
+
+.grid-container {
+    display: grid;
+    grid-gap: 75px;
+    grid-template-columns: auto auto auto auto;
+}
