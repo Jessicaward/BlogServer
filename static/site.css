@@ -58,3 +58,13 @@ body {
 div.post {
     padding: 10px;
 }
+
+.developed-date {
+    font-size: 0.9em;
+    font-style: italic;
+}
+
+.projects h2,
+.projects h3 {
+    font-weight: bold;
+}
