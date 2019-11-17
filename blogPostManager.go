@@ -3,6 +3,7 @@ package main
 import (
 	// Private
 	"BlogServer/utilities"
+	"strings"
 
 	//Public
 	"gopkg.in/russross/blackfriday.v2"
@@ -10,23 +11,25 @@ import (
 
 type BlogPost struct {
 	Title string
-	Views int
 	Body  string
 }
 
 func GetPost(postName string) BlogPost {
-	//posts will be in XML format
-	//containing metadata on post, as well as markdown (actual post)
-	post := utilities.ReadFile(postName + ".html")
-
-	//todo: introduce XML parser
+	post := utilities.ReadFile("posts/" + postName + ".md")
+	postBody := generateHtmlFromMarkdown(post)
+	postTitle := getTitleFromMarkdown(post)
 
 	return BlogPost{
-		Body:  string(post),
-		Title: "test",
+		Body:  string(postBody),
+		Title: postTitle,
 	}
 }
 
 func generateHtmlFromMarkdown(markdown []byte) []byte {
 	return blackfriday.Run(markdown)
+}
+
+func getTitleFromMarkdown(markdown []byte) string {
+	//todo: this returns the title + the remainder of the post
+	return strings.Trim(string(markdown), " #")
 }

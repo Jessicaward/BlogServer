@@ -12,10 +12,7 @@ func HandleRoute() {
 	http.HandleFunc("/projects/", loadProjects)
 	http.HandleFunc("/social/", loadSocial)
 
-	http.HandleFunc("/blog/", func(w http.ResponseWriter, r *http.Request) {
-		//todo: remove this, test code.
-		fmt.Fprintf(w, "Welcome to my blog")
-	})
+	http.HandleFunc("/blog/", loadBlogPost)
 
 	//static CSS and JS files
 	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("static"))))
@@ -43,4 +40,12 @@ func loadProjects(w http.ResponseWriter, r *http.Request) {
 func loadSocial(w http.ResponseWriter, r *http.Request) {
 	t, _ := template.ParseFiles("content/Layout.html", "content/Social.html")
 	t.Execute(w, "layout")
+}
+
+func loadBlogPost(w http.ResponseWriter, r *http.Request) {
+	//todo: need a way to get post name from request
+	t, _ := template.ParseFiles("content/Layout.html", "content/Blog.html")
+	post := GetPost("test-post")
+	fmt.Println("loaded: " + post.Title)
+	t.ExecuteTemplate(w, "layout", post)
 }
