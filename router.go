@@ -11,7 +11,6 @@ func HandleRoute() {
 	http.HandleFunc("/album/", loadRandomAlbum)
 	http.HandleFunc("/projects/", loadProjects)
 	http.HandleFunc("/social/", loadSocial)
-
 	http.HandleFunc("/blog/", loadBlogPost)
 
 	//static CSS and JS files

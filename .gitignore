@@ -13,3 +13,4 @@
 
 # Config file, containing connection strings, API keys etc
 app.config
+.DS_Store
