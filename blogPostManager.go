@@ -28,6 +28,7 @@ type Tag struct {
 }
 
 func GetPost(postName string) BlogPost {
+	//this article may help: https://www.thepolyglotdeveloper.com/2017/04/using-sqlite-database-golang-application/
 	post := utilities.ReadFile("posts/" + postName + ".md")
 	postBody := generateHtmlFromMarkdown(post)
 	metadata := new(Post)
