@@ -4,8 +4,10 @@ import (
 	// Private
 	"BlogServer/utilities"
 	"database/sql"
+	"log"
 
 	//Public
+	_ "github.com/mattn/go-sqlite3"
 	"gopkg.in/russross/blackfriday.v2"
 )
 
@@ -30,24 +32,20 @@ func GetPost(postName string) BlogPost {
 	postBody := generateHtmlFromMarkdown(post)
 	metadata := new(Post)
 	//open database connection
-	database, _ := sql.Open("sqlite3", "./nraboy.db")
+	database, err := sql.Open("sqlite3", "blog.db")
 
-	rows, _ := database.Query("SELECT Title, CreatedAt FROM Post")
-	var title string
-	var createdAt string
-	for rows.Next() {
-		rows.Scan(&title, &createdAt)
+	if err == nil {
+		log.Fatal(err)
 	}
 
-	metadata.Title = title
-	metadata.CreatedAt = createdAt
+	rows, _ := database.Query("SELECT Title, CreatedAt FROM Post;")
+	for rows.Next() {
+		rows.Scan(metadata.Title, metadata.CreatedAt)
+	}
 
 	return BlogPost{
 		Body:     string(postBody),
-		Metadata: Post (
-			Title: title,
-			CreatedAt: createdAt,
-		)
+		Metadata: *metadata,
 	}
 }
 
