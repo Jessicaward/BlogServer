@@ -46,6 +46,5 @@ func loadBlogPost(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "text/html; charset=utf-8")
 	t, _ := template.ParseFiles("content/Layout.html", "content/Blog.html")
 	post := GetPost("test-post")
-	fmt.Println("loaded: " + post.Title)
 	t.ExecuteTemplate(w, "layout", post)
 }
