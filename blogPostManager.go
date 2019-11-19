@@ -32,14 +32,22 @@ func GetPost(postName string) BlogPost {
 	//open database connection
 	database, _ := sql.Open("sqlite3", "./nraboy.db")
 
-	//todo: finish this
 	rows, _ := database.Query("SELECT Title, CreatedAt FROM Post")
+	var title string
+	var createdAt string
 	for rows.Next() {
-		rows.Scan(post.Title, post.CreatedAt)
+		rows.Scan(&title, &createdAt)
 	}
 
+	metadata.Title = title
+	metadata.CreatedAt = createdAt
+
 	return BlogPost{
-		Body: string(postBody),
+		Body:     string(postBody),
+		Metadata: Post (
+			Title: title,
+			CreatedAt: createdAt,
+		)
 	}
 }
 
