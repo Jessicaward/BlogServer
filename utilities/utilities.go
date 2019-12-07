@@ -1,9 +1,10 @@
 package utilities
 
 import (
-	"strings"
-	"io/ioutil"
 	"fmt"
+	"io/ioutil"
+	"regexp"
+	"strings"
 )
 
 func ReadFile(filePath string) []byte {
@@ -16,6 +17,14 @@ func ReadFile(filePath string) []byte {
 	return contents
 }
 
-func ReplaceText(text string, replacementValue string, valueToReplace string) string{
+func CalculateReadTime(numberOfWords int) int {
+	return numberOfWords / 250
+}
+
+func WordCount(value string) int {
+	return len(regexp.MustCompile(`[\S]+`).FindAllString(value, -1))
+}
+
+func ReplaceText(text string, replacementValue string, valueToReplace string) string {
 	return strings.Replace(text, replacementValue, valueToReplace, -1)
 }

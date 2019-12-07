@@ -17,9 +17,10 @@ type BlogPost struct {
 }
 
 type Post struct {
-	Title     string
-	CreatedAt string
-	Tags      []Tag
+	Title             string
+	CreatedAt         string
+	Tags              []Tag
+	ReadTimeInMinutes int
 }
 
 type Tag struct {
@@ -32,6 +33,8 @@ func GetPost(postName string) BlogPost {
 	post := utilities.ReadFile("posts/" + postName + ".md")
 	postBody := generateHtmlFromMarkdown(post)
 	metadata := new(Post)
+	postWordCount := utilities.WordCount(string(postBody))
+	metadata.ReadTimeInMinutes = utilities.CalculateReadTime(postWordCount)
 	//open database connection
 	database, err := sql.Open("sqlite3", "blog.db")
 
