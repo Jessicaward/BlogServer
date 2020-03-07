@@ -3,11 +3,8 @@ package main
 import (
 	// Private
 	"BlogServer/utilities"
-	"database/sql"
-	"log"
 
 	//Public
-	_ "github.com/mattn/go-sqlite3"
 	"gopkg.in/russross/blackfriday.v2"
 )
 
@@ -35,17 +32,6 @@ func GetPost(postName string) BlogPost {
 	metadata := new(Post)
 	postWordCount := utilities.WordCount(string(postBody))
 	metadata.ReadTimeInMinutes = utilities.CalculateReadTime(postWordCount)
-	//open database connection
-	database, err := sql.Open("sqlite3", "blog.db")
-
-	if err == nil {
-		log.Fatal(err)
-	}
-
-	rows, _ := database.Query("SELECT Title, CreatedAt FROM Post;")
-	for rows.Next() {
-		rows.Scan(metadata.Title, metadata.CreatedAt)
-	}
 
 	return BlogPost{
 		Body:     string(postBody),
