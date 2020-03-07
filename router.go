@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"html/template"
 	"net/http"
 )
@@ -26,9 +25,12 @@ func loadHomePage(w http.ResponseWriter, r *http.Request) {
 
 func loadRandomAlbum(w http.ResponseWriter, r *http.Request) {
 	t, _ := template.ParseFiles("content/Layout.html", "content/RandomAlbum.html")
-	album := loadAlbum()
-	fmt.Println("loaded: " + album.Name)
-	t.ExecuteTemplate(w, "layout", album)
+	var albums []*Album
+
+	for x := 0; x < 10; x++ {
+		albums = append(albums, loadAlbum())
+	}
+	t.ExecuteTemplate(w, "layout", AlbumViewData{albums})
 }
 
 func loadProjects(w http.ResponseWriter, r *http.Request) {
