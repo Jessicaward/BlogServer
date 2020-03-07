@@ -1,10 +1,10 @@
 package main
 
 import (
-	"os"
+	"encoding/json"
 	"fmt"
 	"io/ioutil"
-	"encoding/json"
+	"os"
 )
 
 type Config struct {
@@ -12,8 +12,8 @@ type Config struct {
 }
 
 type LastFmConfig struct {
-    ApiKey      string `json:"apiKey"`
-    ApiSecret   string `json:"apiSecret"`
+	ApiKey    string `json:"apiKey"`
+	ApiSecret string `json:"apiSecret"`
 }
 
 func GetLastFmConfiguration() LastFmConfig {
@@ -24,20 +24,12 @@ func GetLastFmConfiguration() LastFmConfig {
 		fmt.Println(err)
 	}
 
-	fmt.Println("Successfully opened config file")
-
 	//read file
 	byteValue, _ := ioutil.ReadAll(configFile)
 	var parsedConfig Config
 
-	fmt.Println(parsedConfig)
-
 	//parse into struct
 	json.Unmarshal(byteValue, &parsedConfig)
-
-	//log contents to console
-	fmt.Println("key: " + parsedConfig.LastFmConfig.ApiKey)
-	fmt.Println("secret: " + (parsedConfig.LastFmConfig.ApiSecret))
 
 	return parsedConfig.LastFmConfig
 }

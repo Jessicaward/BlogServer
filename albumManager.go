@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"math/rand"
 	"strconv"
 	"strings"
@@ -53,7 +52,7 @@ func GetAlbumAtPosition(position int) *Album {
 	result, _ := api.User.GetTopAlbums(lastfm.P{"user": "jessicaward25", "limit": "1", "page": strconv.Itoa(position)}) //discarding error
 
 	for _, r := range result.Albums {
-		album = NewAlbum(r.Name, r.Artist.Name, r.Rank, r.Images[0].Url, r.PlayCount)
+		album = NewAlbum(r.Name, r.Artist.Name, r.Rank, r.Images[2].Url, r.PlayCount)
 	}
 
 	return album
@@ -61,10 +60,8 @@ func GetAlbumAtPosition(position int) *Album {
 
 //Get random album from Last.fm
 func GetRandomAlbum() *Album {
-	rand.Seed(time.Now().Unix())
-	rnd := rand.Intn(1000)
-	fmt.Println("random index: " + strconv.Itoa(rnd))
-	return GetAlbumAtPosition(rnd)
+	rand.Seed(time.Now().UnixNano())
+	return GetAlbumAtPosition(rand.Intn(1000))
 }
 
 func loadAlbum() *Album {

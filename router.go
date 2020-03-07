@@ -27,7 +27,7 @@ func loadRandomAlbum(w http.ResponseWriter, r *http.Request) {
 	t, _ := template.ParseFiles("content/Layout.html", "content/RandomAlbum.html")
 	var albums []*Album
 
-	for x := 0; x < 10; x++ {
+	for x := 0; x < 16; x++ {
 		albums = append(albums, loadAlbum())
 	}
 	t.ExecuteTemplate(w, "layout", AlbumViewData{albums})

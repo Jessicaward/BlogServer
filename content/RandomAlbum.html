@@ -1,14 +1,17 @@
 {{ define "post" }}
-    {{ range .Albums }}
-        <div id="albumContainer">
-            <div id="metadataContainer">
-                <h2>Random Album Selector</h2>
-                <h3>{{.Artist}} - {{.Name}}</h3>
-                <p><strong>#{{.PositionOnLastFm}}</strong> on my Last.fm (<strong>{{.PlayCount}}</strong> plays since February 2017)</p>
-            </div>
+    <h2>Random Album Selector</h2>
+    <p>This is used to randomly select a range of albums from my <a href="https://www.last.fm/user/jessicaward25">Last.fm profile</a>. It's useful for when I want to listen to something but can't decide what.</p>
+    <div class="grid-container">
+        {{ range .Albums }}
+        <div class="albumContainer grid-item">
             <div id="artworkContainer">
                 <img id="imageArtwork" src="{{.ImageUrl}}">
             </div>
+            <div id="metadataContainer">
+                <h3>{{.Artist}} - {{.Name}}</h3>
+                <p><strong>#{{.PositionOnLastFm}}</strong> on my <a href="https://www.last.fm/user/jessicaward25">Last.fm</a> (<strong>{{.PlayCount}}</strong> plays since February 2017)</p>
+            </div>
         </div>
     {{ end }}
+    </div>
 {{ end }}
