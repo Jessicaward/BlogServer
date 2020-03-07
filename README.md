@@ -1,3 +1,4 @@
+![build badge](https://travis-ci.com/Jessicaward/BlogServer.svg?branch=master)
 # BlogServer
 Server for my personal website. Backend written in Golang.
 
