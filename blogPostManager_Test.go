@@ -7,11 +7,11 @@ import (
 )
 
 func TestMarkdownParser(t *testing.T) {
-	testFile := utilities.ReadFile("/posts/test-post.md")
+	testFile := utilities.ReadFile("posts/test_post.md")
 
 	//testFile is required, otherwise rest of test is invalid
 	if testFile == nil {
-		return
+		t.Errorf("Test post was not found")
 	}
 
 	html := generateHtmlFromMarkdown(testFile)
