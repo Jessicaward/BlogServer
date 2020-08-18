@@ -1,8 +1,8 @@
 package main
 
 import (
-	"html/template"
 	"net/http"
+	"text/template"
 )
 
 func HandleRoute() {
@@ -47,6 +47,6 @@ func loadBlogPost(w http.ResponseWriter, r *http.Request) {
 	//todo: need a way to get post name from request
 	w.Header().Set("Content-Type", "text/html; charset=utf-8")
 	t, _ := template.ParseFiles("content/Layout.html", "content/Blog.html")
-	post := GetPost("test-post")
+	post := GetPost("test_post")
 	t.ExecuteTemplate(w, "layout", post)
 }
